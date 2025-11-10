@@ -1,0 +1,94 @@
+<footer class="mx-auto max-w-7xl px-8 lg:px-32 xl:px-40 mt-12 w-full sm:mt-32 lg:mt-40">
+  <div class="mx-auto max-w-2xl lg:max-w-none">
+    <div style="opacity: 1; transform: none;">
+      <div class="grid grid-cols-1 gap-x-8 gap-y-16 border-t border-green-950/10 pt-12 lg:grid-cols-2">
+        <nav>
+          <ul role="list" class="grid grid-cols-2 gap-8 sm:grid-cols-3">
+            <li>
+              <div class="text-base font-semibold tracking-wider text-neutral-950">Institute</div>
+              <ul role="list" class="mt-4 text-sm text-neutral-700">
+                <li class="mt-4">
+                  <a class="transition hover:text-neutral-950" routerLink="/submit-talk">Submit a Talk</a>
+                </li>
+                <li class="mt-4">
+                  <a class="transition hover:text-neutral-950" routerLink="/contact">Contact us</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <div class="text-base font-semibold tracking-wider text-neutral-950">Connect</div>
+              <ul role="list" class="mt-4 text-sm text-neutral-700">
+                <li class="mt-4">
+                  <a class="transition hover:text-neutral-950" 
+                     href="https://www.linkedin.com/company/palmx-institute" 
+                     target="_blank" 
+                     rel="noopener noreferrer">
+                    LinkedIn
+                  </a>
+                </li>
+                <li class="mt-4">
+                  <a class="transition hover:text-neutral-950" 
+                     href="https://www.youtube.com/@@palmxinstitute" 
+                     target="_blank" 
+                     rel="noopener noreferrer">
+                    Youtube
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        
+        <div class="flex lg:justify-end">
+          <form (submit)="handleNewsletterSubmit()" class="max-w-sm">
+            <h3 class="text-lg font-semibold tracking-tight text-green-950">
+              Sign up to our newsletter <span aria-hidden="true">↓</span>
+            </h3>
+            <p class="mt-4 text-sm text-green-900">
+              Join our newsletter to get weekly updates on upcoming<br class="hidden sm:inline">
+              webinars, featured research, and curated resources in<br class="hidden sm:inline">
+              neuroscience, neurotech, AI, and robotics.
+            </p>
+            <div class="relative mt-6">
+              <input 
+                type="email"
+                [(ngModel)]="email"
+                name="email"
+                placeholder="Email address"
+                autocomplete="email"
+                aria-label="Email address"
+                required
+                class="block w-full rounded-2xl border border-neutral-300 bg-transparent py-4 pr-20 pl-6 text-base/6 text-green-950 ring-4 ring-transparent transition placeholder:text-neutral-500 focus:border-green-950 focus:ring-green-950/5 focus:outline-none"
+              />
+              <div class="absolute inset-y-1 right-1 flex justify-end">
+                <button 
+                  type="submit" 
+                  aria-label="Submit" 
+                  class="flex aspect-square h-full items-center justify-center rounded-xl bg-green-700 text-white transition hover:bg-green-800"
+                >
+                  <svg aria-hidden="true" viewBox="0 0 24 24" class="w-4">
+                    <path d="m14 7l5 5-5 5M19 12H5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      
+      <div class="mt-24 mb-20 flex flex-wrap items-end justify-between gap-x-6 gap-y-4 border-t border-green-950/10 pt-12 pl-12 lg:pl-20 xl:pl-32">
+        <a class="inline-flex items-center gap-2" aria-label="Home" routerLink="/">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="#26a269" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8">
+            <path d="M13 8c0-2.76-2.46-5-5.5-5S2 5.24 2 8h2l1-1 1 1h4"></path>
+            <path d="M13 7.14A5.82 5.82 0 0 1 16.5 6c3.04 0 5.5 2.24 5.5 5h-3l-1-1-1 1h-3"></path>
+            <path d="M5.89 9.71c-2.15 2.15-2.3 5.47-.35 7.43l4.24-4.25.7-.7.71-.71 2.12-2.12c-1.95-1.96-5.27-1.8-7.42.35"></path>
+            <path d="M11 15.5c.5 2.5-.17 4.5-1 6.5h4c2-5.5-.5-12-1-14"></path>
+          </svg>
+          <h3 class="font-display hidden text-xl font-bold text-nowrap text-green-900 sm:block">PalmX Institute</h3>
+        </a>
+        <p class="text-sm text-green-950">© PalmX Institute, {{ currentYear }}</p>
+      </div>
+    </div>
+  </div>
+</footer>
+

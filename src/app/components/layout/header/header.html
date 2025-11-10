@@ -1,0 +1,125 @@
+<!-- Header Container with higher z-index -->
+<div class="sticky top-10 z-[100] w-[calc(100%-2rem)] max-w-[1250px] mx-auto"
+  [class.-translate-y-32]="!isVisible()"
+  [class.top-4]="isVisible()"
+  [class.translate-y-0]="isVisible()">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex w-full rounded-xl border bg-white px-6 py-2 relative" style="--header-inner-border-width: 1px; --tw-border-style: solid;">
+      <div class="flex w-full gap-4">
+        <!-- Logo -->
+        <div class="grow basis-0">
+          <a routerLink="/" class="inline-flex items-center gap-2" aria-label="Home">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="#26a269" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-10 w-auto">
+              <path d="M13 8c0-2.76-2.46-5-5.5-5S2 5.24 2 8h2l1-1 1 1h4"></path>
+              <path d="M13 7.14A5.82 5.82 0 0 1 16.5 6c3.04 0 5.5 2.24 5.5 5h-3l-1-1-1 1h-3"></path>
+              <path d="M5.89 9.71c-2.15 2.15-2.3 5.47-.35 7.43l4.24-4.25.7-.7.71-.71 2.12-2.12c-1.95-1.96-5.27-1.8-7.42.35"></path>
+              <path d="M11 15.5c.5 2.5-.17 4.5-1 6.5h4c2-5.5-.5-12-1-14"></path>
+            </svg>
+            <h3 class="font-display hidden text-xl font-bold text-nowrap text-green-900 sm:block">PalmX Institute</h3>
+          </a>
+        </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="pointer-events-auto hidden lg:block">
+        <ul class="flex text-base font-semibold text-green-950">
+          <li><a routerLink="/" fragment="pillars" class="relative block px-3 py-2 transition hover:text-green-500" (click)="closeMobileMenu()">Vision</a></li>
+          <li><a routerLink="/" fragment="domains" class="relative block px-3 py-2 transition hover:text-green-500" (click)="closeMobileMenu()">Domains</a></li>
+          <li><a routerLink="/" fragment="palmx-thursdays" class="relative block px-3 py-2 transition hover:text-green-500" (click)="closeMobileMenu()">Talks</a></li>
+        </ul>
+      </nav>
+
+      <!-- Desktop CTA Buttons -->
+      <div class="flex grow basis-0 justify-end gap-2">
+        <a routerLink="/contact" class="h-fit w-fit justify-center rounded-2xl font-semibold focus:outline-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500 active:text-white/70 hidden bg-white px-4 py-2 text-sm text-nowrap text-green-900 hover:bg-green-50/90 md:block lg:text-lg">Contact Us</a>
+        <a routerLink="/submit-talk" class="inline-flex h-fit w-fit justify-center rounded-2xl bg-green-600 font-semibold text-white hover:bg-green-500 focus:outline-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500 active:text-white/70 px-4 py-2 text-sm text-nowrap lg:text-lg">Submit a Talk</a>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <div class="pointer-events-auto lg:hidden">
+      <button 
+        (click)="toggleMobileMenu()" 
+        class="group rounded-full bg-white/90 py-2 pl-2" 
+        type="button" 
+        [attr.aria-expanded]="isMobileMenuOpen()"
+        [class.text-green-600]="isMobileMenuOpen()">
+        <span class="sr-only">Menu</span>
+        <ng-icon 
+          [name]="isMobileMenuOpen() ? 'lucideX' : 'lucideMenu'" 
+          size="24" 
+          class="h-6 w-6 stroke-green-800 group-hover:stroke-green-600"
+          [class.stroke-green-600]="isMobileMenuOpen()">
+        </ng-icon>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation -->
+  @if (isMobileMenuOpen()) {
+    <!-- Blur Background - Full screen with higher z-index -->
+    <div 
+      class="fixed inset-0 z-[90] h-screen w-screen bg-black/20 backdrop-blur-sm transition-opacity duration-200"
+      [class.invisible]="!isMobileMenuOpen()"
+      [class.opacity-0]="!isMobileMenuOpen()"
+      [class.ease-in-out]="true"
+      (click)="closeMobileMenu()">
+    </div>
+    
+    <!-- Menu Content - Above blur but below header -->
+    <div class="fixed inset-x-0 top-0 z-[95] mx-4 mt-2 origin-top rounded-xl bg-white/95 px-4 py-2 shadow-lg ring-1 ring-zinc-900/5 backdrop-blur-sm duration-150 data-[closed]:scale-95 data-[closed]:opacity-0 data-[enter]:ease-out data-[leave]:ease-in"
+      [attr.data-headlessui-state]="isMobileMenuOpen() ? 'open' : ''"
+      [attr.data-open]="isMobileMenuOpen() ? '' : null">
+      <!-- Header -->
+      <div class="flex items-center justify-between bg-white/95 rounded-t-xl">
+        <div class="flex w-full gap-4">
+          <div class="grow basis-0">
+            <a routerLink="/" class="inline-flex items-center gap-2" aria-label="Home" (click)="closeMobileMenu()">
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="#26a269" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-10 w-auto">
+                <path d="M13 8c0-2.76-2.46-5-5.5-5S2 5.24 2 8h2l1-1 1 1h4"></path>
+                <path d="M13 7.14A5.82 5.82 0 0 1 16.5 6c3.04 0 5.5 2.24 5.5 5h-3l-1-1-1 1h-3"></path>
+                <path d="M5.89 9.71c-2.15 2.15-2.3 5.47-.35 7.43l4.24-4.25.7-.7.71-.71 2.12-2.12c-1.95-1.96-5.27-1.8-7.42.35"></path>
+                <path d="M11 15.5c.5 2.5-.17 4.5-1 6.5h4c2-5.5-.5-12-1-14"></path>
+              </svg>
+              <h3 class="font-display hidden text-xl font-bold text-nowrap text-green-900 sm:block">PalmX Institute</h3>
+            </a>
+          </div>
+          <div class="flex grow basis-0 justify-end gap-2">
+            <a routerLink="/contact" class="h-fit w-fit justify-center rounded-2xl font-semibold focus:outline-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500 active:text-white/70 hidden bg-white px-4 py-2 text-sm text-nowrap text-green-900 hover:bg-green-50/90 md:block lg:text-lg" (click)="closeMobileMenu()">Contact Us</a>
+            <a routerLink="/submit-talk" class="inline-flex h-fit w-fit justify-center rounded-2xl bg-green-600 font-semibold text-white hover:bg-green-500 focus:outline-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500 active:text-white/70 px-4 py-2 text-sm text-nowrap lg:text-lg" (click)="closeMobileMenu()">Submit a Talk</a>
+          </div>
+        </div>
+        <button 
+          (click)="toggleMobileMenu()" 
+          aria-label="Close menu" 
+          class="pl-1" 
+          type="button" 
+          [attr.data-headlessui-state]="isMobileMenuOpen() ? 'open active' : ''"
+          [attr.data-open]="isMobileMenuOpen() ? '' : null"
+          [attr.data-active]="isMobileMenuOpen() ? '' : null">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x h-6 w-6 text-zinc-500" aria-hidden="true">
+            <path d="M18 6 6 18"></path>
+            <path d="m6 6 12 12"></path>
+          </svg>
+        </button>
+      </div>
+      
+      <!-- Menu Items -->
+      <nav class="mt-4 px-4 pb-4 bg-white/95 rounded-b-xl">
+        <ul class="space-y-4 divide-y divide-green-100 text-base text-green-800">
+          <li>
+            <a routerLink="/" fragment="pillars" class="block py-3 text-lg text-green-950 hover:text-green-600 transition-colors" (click)="closeMobileMenu()">Vision</a>
+          </li>
+          <li>
+            <a routerLink="/" fragment="domains" class="block py-3 text-lg text-green-950 hover:text-green-600 transition-colors" (click)="closeMobileMenu()">Domains</a>
+          </li>
+          <li>
+            <a routerLink="/" fragment="palmx-thursdays" class="block py-3 text-lg text-green-950 hover:text-green-600 transition-colors" (click)="closeMobileMenu()">Talks</a>
+          </li>
+        </ul>
+        <div class="flex justify-end mt-6">
+          <a routerLink="/contact" class="h-fit w-full justify-center rounded-2xl font-semibold focus:outline-hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500 active:text-white/70 block bg-green-600 px-6 py-3 text-lg text-nowrap text-white hover:bg-green-700 transition-colors md:hidden" (click)="closeMobileMenu()">Contact Us</a>
+        </div>
+      </nav>
+    </div>
+  }
+</div>

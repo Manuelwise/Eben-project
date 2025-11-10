@@ -1,0 +1,70 @@
+<section id="domains" class="py-20 md:py-32 px-4" appScrollAnimation>
+  <div class="container mx-auto max-w-7xl">
+    <div class="max-w-2xl mb-12">
+      <h2>
+        <span class="font-display block tracking-tight [text-wrap:balance] text-4xl font-medium sm:text-5xl text-green-800">
+          Our Core Domains
+        </span>
+      </h2>
+      
+      <div class="mt-6 text-xl text-neutral-600">
+        <p>
+          PalmX focuses on four intersecting domains that are shaping the future of science and technology. 
+          By grounding our work in these areas, we aim to bridge disciplines and foster meaningful research, 
+          collaboration, and innovation across Africa and beyond.
+        </p>
+      </div>
+    </div>
+
+    <div class="lg:flex lg:items-center lg:justify-end">
+      <!-- Brain Image -->
+      <div class="flex justify-center lg:w-1/2 lg:justify-end lg:pr-12">
+        <div class="w-[24rem] flex-none md:w-[33rem] lg:w-[38rem]" style="opacity: 1; transform: none;">
+          <div class="justify-center lg:justify-end relative flex aspect-[719/680] w-full">
+            <svg viewBox="0 0 600 600" fill="none" class="h-full rounded-xl">
+              <g clip-path="url(#brain-clip)" class="group">
+                <g class="origin-center scale-100 transition duration-500 motion-safe:group-hover:scale-105">
+                  <foreignObject width="600" height="600">
+                    <img 
+                      src="/brain.webp" 
+                      alt="Brain visualization" 
+                      class="w-full bg-neutral-100 object-cover"
+                      sizes="(min-width: 1024px) 41rem, 31rem"
+                      loading="lazy"
+                      decoding="async"
+                      style="aspect-ratio: 1; color: transparent;"
+                    />
+                  </foreignObject>
+                </g>
+                <use href="#brain-shape" stroke-width="2" class="stroke-neutral-950/10"></use>
+              </g>
+              <defs>
+                <clipPath id="brain-clip">
+                  <rect width="600" height="600" rx="12" />
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Domains List -->
+      <ul role="list" class="text-base text-neutral-600 mt-16 lg:mt-0 lg:w-1/2 lg:min-w-[33rem] lg:pl-4">
+        @for (domain of domains; track domain.title; let first = $first) {
+          <li class="group mt-10 first:mt-0">
+            <div style="opacity: 1; transform: none;">
+              <div class="pt-10 group-first:pt-0 group-first:before:hidden group-first:after:hidden relative 
+                          before:absolute after:absolute before:bg-green-800 after:bg-green-800/10 
+                          before:top-0 before:left-0 before:h-px before:w-6 
+                          after:top-0 after:right-0 after:left-8 after:h-px">
+                <strong class="font-semibold text-green-800">{{ domain.title }}. </strong>
+                <span>{{ domain.description }}</span>
+              </div>
+            </div>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
